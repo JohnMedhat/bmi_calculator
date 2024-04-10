@@ -14,6 +14,7 @@ class BmiCalculator extends StatefulWidget {
 
 class _BmiCalculatorState extends State<BmiCalculator> {
   bool isMale = true;
+  Color initialCardColor = cardBackgroundColor;
   double height = 170;
   int weight = 70;
   int age = 25;
@@ -47,14 +48,14 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                       onTap: () {
                         setState(() {
                           isMale = true;
+                          initialCardColor = selectedCardBackgroundColor;
                         });
                       },
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: isMale
-                              ? selectedCardBackgroundColor
-                              : cardBackgroundColor,
+                          color:
+                              isMale ? initialCardColor : cardBackgroundColor,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -338,7 +339,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
               onPressed: () {
                 BMICalculator calc =
                     BMICalculator(height: height, weight: weight);
-               
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
